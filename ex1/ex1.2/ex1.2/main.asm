@@ -22,18 +22,18 @@ start:
 loop:
 	mov F0, a
 	com F0
-	andi F0, b
+	and F0, b
 	mov temp, b
 	com temp
-	andi temp, d
-	ori f0, temp
+	and temp, d
+	or f0, temp
 	com f0
 
 	mov f1, a
-	ori f1, c
+	or f1, c
 	mov temp, b
-	ori temp, d
-	andi f1, temp
+	or temp, d
+	and f1, temp
 
 	inc a
 	subi b, -0x02
