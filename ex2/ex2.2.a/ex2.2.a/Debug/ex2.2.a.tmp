@@ -1,0 +1,31 @@
+<ASSEMBLER_INFO>
+ <VERSION>2.2.8</VERSION>
+ <DEVICE>"ATmega328PB"</DEVICE>
+ <WORKING_DIR>C:\Users\N\Desktop\ex2.2.a\ex2.2.a\Debug</WORKING_DIR>
+ <INCLUDE_PATH>
+  <DIR>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc</DIR>
+  <DIR>C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avrassembler\Include</DIR>
+  <DIR></DIR>
+ </INCLUDE_PATH>
+ <SOURCE_FILE>C:\Users\N\Desktop\ex2.2.a\ex2.2.a\main.asm</SOURCE_FILE>
+ <INCLUDED_FILES>
+  <FILE>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m328PBdef.inc</FILE>
+ </INCLUDED_FILES>
+ <OBJECT_FILES>
+  <FILE>C:\Users\N\Desktop\ex2.2.a\ex2.2.a\Debug\ex2.2.a.obj</FILE>
+ </OBJECT_FILES>
+ <HEX_FILES>
+  <FILE>ex2.2.a.hex</FILE>
+ </HEX_FILES>
+ <OUTPUT_FILES>
+  <FILE>ex2.2.a.map</FILE>
+  <FILE>ex2.2.a.lss</FILE>
+ </OUTPUT_FILES>
+ <LABELS>
+  <init><FILE>C:\Users\N\Desktop\ex2.2.a\ex2.2.a\main.asm</FILE><LINE>9</LINE></init>
+  <loop1><FILE>C:\Users\N\Desktop\ex2.2.a\ex2.2.a\main.asm</FILE><LINE>21</LINE></loop1>
+  <loop2><FILE>C:\Users\N\Desktop\ex2.2.a\ex2.2.a\main.asm</FILE><LINE>23</LINE></loop2>
+  <delay_mS><FILE>C:\Users\N\Desktop\ex2.2.a\ex2.2.a\main.asm</FILE><LINE>39</LINE></delay_mS>
+  <loop><FILE>C:\Users\N\Desktop\ex2.2.a\ex2.2.a\main.asm</FILE><LINE>41</LINE></loop>
+ </LABELS>
+</ASSEMBLER_INFO>
