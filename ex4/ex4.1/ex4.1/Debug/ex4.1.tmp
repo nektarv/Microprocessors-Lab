@@ -1,0 +1,48 @@
+<ASSEMBLER_INFO>
+ <VERSION>2.2.8</VERSION>
+ <DEVICE>"ATmega328PB"</DEVICE>
+ <WORKING_DIR>C:\Users\N\Desktop\ex4.1\ex4.1\Debug</WORKING_DIR>
+ <INCLUDE_PATH>
+  <DIR>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc</DIR>
+  <DIR>C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avrassembler\Include</DIR>
+  <DIR></DIR>
+ </INCLUDE_PATH>
+ <SOURCE_FILE>C:\Users\N\Desktop\ex4.1\ex4.1\main.asm</SOURCE_FILE>
+ <INCLUDED_FILES>
+  <FILE>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m328PBdef.inc</FILE>
+ </INCLUDED_FILES>
+ <OBJECT_FILES>
+  <FILE>C:\Users\N\Desktop\ex4.1\ex4.1\Debug\ex4.1.obj</FILE>
+ </OBJECT_FILES>
+ <HEX_FILES>
+  <FILE>ex4.1.hex</FILE>
+ </HEX_FILES>
+ <OUTPUT_FILES>
+  <FILE>ex4.1.map</FILE>
+  <FILE>ex4.1.lss</FILE>
+ </OUTPUT_FILES>
+ <LABELS>
+  <init><FILE>C:\Users\N\Desktop\ex4.1\ex4.1\main.asm</FILE><LINE>86</LINE></init>
+  <adc_isr><FILE>C:\Users\N\Desktop\ex4.1\ex4.1\main.asm</FILE><LINE>23</LINE></adc_isr>
+  <lcd_clear_display><FILE>C:\Users\N\Desktop\ex4.1\ex4.1\main.asm</FILE><LINE>260</LINE></lcd_clear_display>
+  <multiply><FILE>C:\Users\N\Desktop\ex4.1\ex4.1\main.asm</FILE><LINE>121</LINE></multiply>
+  <count_digits><FILE>C:\Users\N\Desktop\ex4.1\ex4.1\main.asm</FILE><LINE>171</LINE></count_digits>
+  <lcd_data><FILE>C:\Users\N\Desktop\ex4.1\ex4.1\main.asm</FILE><LINE>240</LINE></lcd_data>
+  <wait_msec><FILE>C:\Users\N\Desktop\ex4.1\ex4.1\main.asm</FILE><LINE>331</LINE></wait_msec>
+  <lcd_init><FILE>C:\Users\N\Desktop\ex4.1\ex4.1\main.asm</FILE><LINE>270</LINE></lcd_init>
+  <main><FILE>C:\Users\N\Desktop\ex4.1\ex4.1\main.asm</FILE><LINE>113</LINE></main>
+  <divide><FILE>C:\Users\N\Desktop\ex4.1\ex4.1\main.asm</FILE><LINE>156</LINE></divide>
+  <integer_part><FILE>C:\Users\N\Desktop\ex4.1\ex4.1\main.asm</FILE><LINE>176</LINE></integer_part>
+  <end_integer_part><FILE>C:\Users\N\Desktop\ex4.1\ex4.1\main.asm</FILE><LINE>182</LINE></end_integer_part>
+  <decimal_tens_part><FILE>C:\Users\N\Desktop\ex4.1\ex4.1\main.asm</FILE><LINE>185</LINE></decimal_tens_part>
+  <end_tens_part><FILE>C:\Users\N\Desktop\ex4.1\ex4.1\main.asm</FILE><LINE>190</LINE></end_tens_part>
+  <decimal_units_part><FILE>C:\Users\N\Desktop\ex4.1\ex4.1\main.asm</FILE><LINE>192</LINE></decimal_units_part>
+  <end_counting><FILE>C:\Users\N\Desktop\ex4.1\ex4.1\main.asm</FILE><LINE>197</LINE></end_counting>
+  <write_2_nibbles><FILE>C:\Users\N\Desktop\ex4.1\ex4.1\main.asm</FILE><LINE>205</LINE></write_2_nibbles>
+  <wait_usec><FILE>C:\Users\N\Desktop\ex4.1\ex4.1\main.asm</FILE><LINE>350</LINE></wait_usec>
+  <lcd_command><FILE>C:\Users\N\Desktop\ex4.1\ex4.1\main.asm</FILE><LINE>250</LINE></lcd_command>
+  <inner_loop><FILE>C:\Users\N\Desktop\ex4.1\ex4.1\main.asm</FILE><LINE>334</LINE></inner_loop>
+  <last><FILE>C:\Users\N\Desktop\ex4.1\ex4.1\main.asm</FILE><LINE>346</LINE></last>
+  <delay_8cycles><FILE>C:\Users\N\Desktop\ex4.1\ex4.1\main.asm</FILE><LINE>355</LINE></delay_8cycles>
+ </LABELS>
+</ASSEMBLER_INFO>
