@@ -196,33 +196,41 @@ uint8_t PCA9555_0_read(PCA9555_REGISTERS reg)
 }
 
 // ------ LCD functions using PCA ------
-void write_2_nibbles(uint8_t data)
-{
-	uint8_t temp;
-	uint8_t state;
-
-	temp = PCA9555_0_read(REG_OUTPUT_0) & 0x0F;
-	state = temp | (data & 0xF0);
+void write_2_nibbles(uint8_t input){
+	// preserve 4 control bits
+	uint8_t control_bits = state & 0x0F;
+	// combine control bits with high nibble of input
+	uint8_t output = control_bits + (input & 0xF0);
+	
+	// update state and send to LCD
+	state = output;
 	PCA9555_0_write(REG_OUTPUT_0, state);
-
-	state |= (1 << PD3);
+	
+	// enable pulse
+	state |= (1<<PD3);
 	PCA9555_0_write(REG_OUTPUT_0, state);
-	_delay_ms(1);
-	state &= ~(1 << PD3);
+	_delay_us(1);
+	state &= ~(1<<PD3);
 	PCA9555_0_write(REG_OUTPUT_0, state);
-
-	temp = PCA9555_0_read(REG_OUTPUT_0) & 0x0F;
-	state = temp | ((data << 4) & 0xF0);
+	
+	// combine control bits with low nibble of input
+	input <<= 4;
+	output = control_bits + (input & 0xF0);
+	
+	// update state and send to LCD
+	state = output;
 	PCA9555_0_write(REG_OUTPUT_0, state);
-
-	state |= (1 << PD3);
+	
+	// enable pulse
+	state |= (1<<PD3);
 	PCA9555_0_write(REG_OUTPUT_0, state);
-	_delay_ms(1);
-	state &= ~(1 << PD3);
+	_delay_us(1);
+	state &= ~(1<<PD3);
 	PCA9555_0_write(REG_OUTPUT_0, state);
 }
 
 void lcd_command(uint8_t command){
+	// RS=0, send command
 	state &= ~(1<<PD2);
 	PCA9555_0_write(REG_OUTPUT_0, state);
 	write_2_nibbles(command);
@@ -230,6 +238,7 @@ void lcd_command(uint8_t command){
 }
 
 void lcd_data(uint8_t data){
+	// RS=1, send data
 	state |= (1<<PD2);
 	PCA9555_0_write(REG_OUTPUT_0, state);
 	write_2_nibbles(data);
@@ -242,30 +251,31 @@ void lcd_clear_display(){
 }
 
 void lcd_init(){
-	
 	_delay_ms(200);
-	uint8_t state;
 	
+	// send 0x30 three times - 8bit mode
 	for (int i=0; i<3; i++){
 		state = 0x30;
 		PCA9555_0_write(REG_OUTPUT_0, state);
 		state |= (1<<PD3);
 		PCA9555_0_write(REG_OUTPUT_0, state);
-		_delay_ms(1);
+		_delay_us(1);
 		state &= ~(1<<PD3);
 		PCA9555_0_write(REG_OUTPUT_0, state);
 		_delay_us(250);
 	}
 	
+	// send 0x20 - switch to 4bit mode
 	state = 0x20;
 	PCA9555_0_write(REG_OUTPUT_0, state);
 	state |= (1<<PD3);
 	PCA9555_0_write(REG_OUTPUT_0, state);
-	_delay_ms(1);
+	_delay_us(1);
 	state &= ~(1<<PD3);
 	PCA9555_0_write(REG_OUTPUT_0, state);
 	_delay_us(250);
 	
+	// screen setup from lab 4
 	lcd_command(0x28);
 	lcd_command(0x0C);
 	lcd_clear_display();
