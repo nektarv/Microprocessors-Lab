@@ -4,4 +4,4 @@ This repository contains the exercises developed for the **Microprocessors Lab**
 
 The exercises are implemented in **AVR Assembly** and **C**, targeting the **ATmega328PB** microcontroller.
 
-I've only included the exercises that I implemented myself. The rest were implemented by my lab parnter.
+I've only included the exercises that I implemented myself. The rest were implemented by my lab partner.
