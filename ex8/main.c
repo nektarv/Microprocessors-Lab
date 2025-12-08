@@ -17,6 +17,8 @@ volatile bool nurse_call = false;
 volatile bool nurse_response = true;
 
 void initialization();
+void patient_friendly_delay(int delay);
+void keypad_sanity_check();
 void nurse_call_status();
 const char* patient_status(float temp, float press);
 void display_patient_measurements(float temp, float pressure);
