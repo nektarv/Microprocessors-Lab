@@ -1,7 +1,10 @@
 # Microprocessors Lab
 
-This repository contains the exercises developed for the **Microprocessors Lab** course at the **School of Electrical and Computer Engineering** at NTUA.
+This repository contains laboratory exercises developed for the **Microprocessors Lab** course at the **School of Electrical and Computer Engineering, NTUA**.
 
-The exercises are implemented in **AVR Assembly** and **C**, targeting the **ATmega328PB** microcontroller.
+## 📌 Overview
 
-I've only included the exercises that I implemented myself. The rest were implemented by my lab partner.
+The exercises are implemented in **AVR Assembly** and **C**, targeting the **ATmega328PB microcontroller**.
+
+## 👤 Contribution Note
+I have included only the exercises that I personally implemented. The remaining exercises were developed by my lab partner as part of our collaborative work.
