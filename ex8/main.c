@@ -12,13 +12,9 @@ volatile uint8_t state = 0;
 // is set when patient calls for nurse (4)
 // is cleared when nurse resolves (#)
 volatile bool nurse_call = false;
-// is cleared when we have an active nurse call
-// is set when nurse resolves (#)
-volatile bool nurse_response = true;
 
 void initialization();
 void patient_friendly_delay(int delay);
-void keypad_sanity_check();
 void nurse_call_status();
 const char* patient_status(float temp, float press);
 void display_patient_measurements(float temp, float pressure);
@@ -30,20 +26,19 @@ int main(){
 	// answer will receive ESP's answers
 	char answer[64];
 	
-	// restart ESP
-	// esp_send_command("restart");
-	
 	// connect to ESP
 	esp_send_command("connect");
 	esp_receive_answer(answer);
 	esp_print_response('1', answer);
-	patient_friendly_delay(1500);
+	_delay_ms(1000);
+	lcd_clear_display();
 	
 	// send url to ESP
 	esp_send_command("url:\"http://192.168.1.250:5000/data\"");
 	esp_receive_answer(answer);
 	esp_print_response('2', answer);
-	patient_friendly_delay(1500);
+	_delay_ms(1000);
+	lcd_clear_display();
 	
 	// start displaying patient status
 	while(1){
@@ -61,7 +56,7 @@ int main(){
 		send_payload(patient_temp, patient_press);	// calls esp_send_command() at the end
 		esp_receive_answer(answer);
 		esp_print_response('3', answer);
-		patient_friendly_delay(1500);
+		patient_friendly_delay(1000);
 		
 		// transmit
 		esp_send_command("transmit");
@@ -72,7 +67,7 @@ int main(){
 			if(answer[i] == '\r') continue;
 			lcd_data(answer[i]);
 		}
-		patient_friendly_delay(1500);
+		patient_friendly_delay(1000);
 	}
 }
 
@@ -96,8 +91,6 @@ void initialization(){
 	ADCSRA = (1<<ADEN)|(1<<ADPS0)|(1<<ADPS1)|(1<<ADPS2);
 	_delay_ms(100);
 	
-	lcd_clear_display();	// preserving mental health
-	
 	return;
 }
 
@@ -108,44 +101,30 @@ void patient_friendly_delay(int delay){
 	int iter = delay / 10;
 	for(int i=0; i<iter; i++){
 		_delay_ms(10);
-		keypad_sanity_check();
+		nurse_call_status();
 	}
 	
-	// this delay is always called after printing
+	// this delay is always called after printing,
 	// clear lcd here for a more readable main
 	lcd_clear_display();
 }
 
-void keypad_sanity_check(){
-	// created to check whether keypad is pressed
-	// during payload or transmit parts
-	
+void nurse_call_status(){
+	// if we don't have an active nurse call
+	// check if patient requests for a nurse
 	if(!nurse_call){
 		if (keypad_to_ascii(scan_keypad()) == '4'){
 			nurse_call = true;
-			nurse_response = false;
 		}
 	}
 	
+	// if we do have an active nurse call
+	// check if nurse tries to resolve it
 	if(nurse_call){
 		if (keypad_to_ascii(scan_keypad()) == '#'){
 			nurse_call = false;
-			nurse_response = true;
 		}
 	}	
-}
-
-void nurse_call_status(){
-	// if we have an active nurse call, return
-	if (!nurse_response) return;
-	
-	// if we don't have an active nurse call
-	// check if the patient requests for a nurse
-	// set flags accordingly
-	if (keypad_to_ascii(scan_keypad()) == '4'){
-		nurse_call = true;
-		nurse_response = false;
-	}
 }
 
 const char* patient_status(float temp, float press){
@@ -189,12 +168,6 @@ void patient_report(float temp, float press){
 	lcd_command(0xC0);
 	// display patient status
 	for(int i=0; status[i]!='\0'; i++) lcd_data(status[i]);
-	
-	// if '#' is pressed, reset nurse_call flags
-	if(keypad_to_ascii(scan_keypad()) == '#'){
-		nurse_response = true;
-		nurse_call = false;
-	}
 }
 
 void send_payload(float patient_temp, float patient_press){
