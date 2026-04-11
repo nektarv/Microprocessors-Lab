@@ -7,3 +7,6 @@ The exercises are implemented in **AVR Assembly** and **C**, targeting the **ATm
 
 ## 👤 Contribution Note
 I have included only the exercises that I personally implemented. The remaining exercises were developed by my lab partner as part of our collaborative work.
+
+## ⚠️ Note on Logic
+The exercises use active-low logic, as required by the physical board.
